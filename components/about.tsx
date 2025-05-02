@@ -20,22 +20,34 @@ export function About() {
             </div>
           </div>
           <div className="w-full md:w-1/2">
-            <h2 className="text-3xl font-bold text-indigo-800 mb-6">À propos de nous</h2>
+            <h2 className="text-3xl font-bold text-indigo-800 mb-6">
+              À propos de nous
+            </h2>
             <p className="text-gray-700 mb-6">
-              Le <strong>CABINET PREVENT CARE MEDICAL</strong> est un centre médical spécialisé en médecine du travail qui apporte son
-              expertise aux entreprises de tous secteurs d'activités en Côte d'Ivoire.
+              Le <strong>CABINET PREVENT CARE MEDICAL</strong> est un centre
+              médical spécialisé en médecine du travail qui apporte son
+              expertise aux entreprises de tous secteurs d'activités en Côte
+              d'Ivoire.
             </p>
             <p className="text-gray-700 mb-6">
-              Centre spécialisé en Santé et Sécurité au Travail totalisant 10 ans d’expérience dans plusieurs secteurs d’activités dont les secteurs Minier, Pétrolier, Manutentionnaire, Btp, Agro-industriel, Pharmaceutiques, Phytosanitaires, Commerces & Services, Grandes distributions, etc…
+              Centre spécialisé en Santé et Sécurité au Travail totalisant 10
+              ans d’expérience dans plusieurs secteurs d’activités dont les
+              secteurs Minier, Pétrolier, Manutentionnaire, Btp,
+              Agro-industriel, Pharmaceutiques, Phytosanitaires, Commerces &
+              Services, Grandes distributions, etc…
             </p>
             <p className="text-gray-700 mb-6">
-              Notre équipe est formée à la pratique internationale normative SST ISO 45001 version 2018. Nous protégeons vos travailleurs sur leurs lieux de travail en les rendant sûrs, salubres et sains conformément aux dispositions réglementaires.
+              Notre équipe est formée à la pratique internationale normative SST
+              ISO 45001 version 2018. Nous protégeons vos travailleurs sur leurs
+              lieux de travail en les rendant sûrs, salubres et sains
+              conformément aux dispositions réglementaires.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              <div className="flex items-start">
-                <div className="bg-blue-100 p-3 rounded-full mr-4">
+              {/* Item Expertise */}
+              <div className="flex items-start p-4 rounded-lg transition-all duration-300 hover:bg-blue-50 hover:shadow-md hover:-translate-y-1">
+                <div className="bg-blue-100 p-3 rounded-full mr-4 transition-all duration-300 group-hover:bg-blue-200">
                   <svg
-                    className="w-6 h-6 text-blue-600"
+                    className="w-6 h-6 text-blue-600 transition-all duration-300 group-hover:text-blue-800"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -49,34 +61,49 @@ export function About() {
                     />
                   </svg>
                 </div>
-
-
                 <div>
-                  <h3 className="font-semibold text-gray-900">Expertise</h3>
-                  <p className="text-sm text-gray-600">Équipe de médecins spécialistes</p>
+                  <h3 className="font-semibold text-gray-900 transition-all duration-300 group-hover:text-blue-800">
+                    Expertise
+                  </h3>
+                  <p className="text-sm text-gray-600 transition-all duration-300 group-hover:text-gray-800">
+                    Équipe de médecins spécialistes
+                  </p>
                 </div>
               </div>
-              <div className="flex items-start">
-                <div className="bg-blue-100 p-3 rounded-full mr-4">
+
+              {/* Item Efficacité */}
+              <div className="flex items-start p-4 rounded-lg transition-all duration-300 hover:bg-blue-50 hover:shadow-md hover:-translate-y-1">
+                <div className="bg-blue-100 p-3 rounded-full mr-4 transition-all duration-300 group-hover:bg-blue-200">
                   <svg
-                    className="w-6 h-6 text-blue-600"
+                    className="w-6 h-6 text-blue-600 transition-all duration-300 group-hover:text-blue-800"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg"
                   >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M13 10V3L4 14h7v7l9-11h-7z"
+                    />
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Efficacité</h3>
-                  <p className="text-sm text-gray-600">Services rapides et efficaces</p>
+                  <h3 className="font-semibold text-gray-900 transition-all duration-300 group-hover:text-blue-800">
+                    Efficacité
+                  </h3>
+                  <p className="text-sm text-gray-600 transition-all duration-300 group-hover:text-gray-800">
+                    Services rapides et efficaces
+                  </p>
                 </div>
               </div>
-              <div className="flex items-start">
-                <div className="bg-blue-100 p-3 rounded-full mr-4">
+
+              {/* Item Innovation */}
+              <div className="flex items-start p-4 rounded-lg transition-all duration-300 hover:bg-blue-50 hover:shadow-md hover:-translate-y-1">
+                <div className="bg-blue-100 p-3 rounded-full mr-4 transition-all duration-300 group-hover:bg-blue-200">
                   <svg
-                    className="w-6 h-6 text-blue-600"
+                    className="w-6 h-6 text-blue-600 transition-all duration-300 group-hover:text-blue-800"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -91,14 +118,20 @@ export function About() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Innovation</h3>
-                  <p className="text-sm text-gray-600">Équipements médicaux modernes</p>
+                  <h3 className="font-semibold text-gray-900 transition-all duration-300 group-hover:text-blue-800">
+                    Innovation
+                  </h3>
+                  <p className="text-sm text-gray-600 transition-all duration-300 group-hover:text-gray-800">
+                    Équipements médicaux modernes
+                  </p>
                 </div>
               </div>
-              <div className="flex items-start">
-                <div className="bg-blue-100 p-3 rounded-full mr-4">
+
+              {/* Item Disponibilité */}
+              <div className="flex items-start p-4 rounded-lg transition-all duration-300 hover:bg-blue-50 hover:shadow-md hover:-translate-y-1">
+                <div className="bg-blue-100 p-3 rounded-full mr-4 transition-all duration-300 group-hover:bg-blue-200">
                   <svg
-                    className="w-6 h-6 text-blue-600"
+                    className="w-6 h-6 text-blue-600 transition-all duration-300 group-hover:text-blue-800"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -113,8 +146,12 @@ export function About() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-gray-900">Disponibilité</h3>
-                  <p className="text-sm text-gray-600">Service disponible 24/7</p>
+                  <h3 className="font-semibold text-gray-900 transition-all duration-300 group-hover:text-blue-800">
+                    Disponibilité
+                  </h3>
+                  <p className="text-sm text-gray-600 transition-all duration-300 group-hover:text-gray-800">
+                    Service disponible 24/7
+                  </p>
                 </div>
               </div>
             </div>
@@ -122,5 +159,5 @@ export function About() {
         </div>
       </div>
     </section>
-  )
+  );
 }

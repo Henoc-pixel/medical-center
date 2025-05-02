@@ -7,19 +7,22 @@ import {Appointment} from "@/components/appointment"
 import {News} from "@/components/news"
 import {Contact} from "@/components/contact"
 import {Footer} from "@/components/footer"
+import { Faq } from "@/components/faq"
+import "@/styles/globals.css"
 
 export default function Home() {
     return (
-        <main>
-            <Header/>
-            <Hero/>
-            <About/>
-            <News/>
+      <main>
+        <Header />
+        <Hero />
+        <About />
+        {/* <News/>
             <Services/>
             <Training/>
             <Appointment/>
-            <Contact/>
-            <Footer/>
-        </main>
-    )
+            <Contact/>*/}
+        <Faq/>
+        <Footer />
+      </main>
+    );
 }
