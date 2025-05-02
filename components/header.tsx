@@ -1,0 +1,180 @@
+"use client"
+
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import { Button } from "@/components/ui/button"
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
+import { Menu, Phone, MapPin, Facebook, Instagram, Twitter, Linkedin, Watch, WatchIcon, LucideWatch, Clock, Download } from "lucide-react"
+
+export function Header() {
+  const [isScrolled, setIsScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => {
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [])
+
+  const navItems = [
+    { name: "Accueil", href: "/" },
+    { name: "Présentation", href: "#about" },
+    { name: "Prestations", href: "#services" },
+    { name: "Formations", href: "#training" },
+    { name: "Prendre Un RDV", href: "#appointment" },
+    { name: "Actualités", href: "#news" },
+    { name: "Contact", href: "#contact" },
+  ]
+
+  return (
+    <header className={`w-full bg-white ${isScrolled ? "sticky top-0 shadow-md z-50" : ""}`}>
+      <div className="container mx-auto px-4">
+        {/* Top bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center py-2 border-b">
+          <div className="text-sm text-center md:text-left text-gray-600 mb-2 md:mb-0">
+            Cabinet spécialisé en Médecine du Travail en Côte d'Ivoire
+          </div>
+          <div className="flex items-center space-x-4">
+            <Link href="#" className="text-gray-600 hover:text-blue-600">
+              <Facebook size={18} />
+              <span className="sr-only">Facebook</span>
+            </Link>
+            <Link href="#" className="text-gray-600 hover:text-blue-600">
+              <Instagram size={18} />
+              <span className="sr-only">Instagram</span>
+            </Link>
+            <Link href="#" className="text-gray-600 hover:text-blue-600">
+              <Twitter size={18} />
+              <span className="sr-only">Twitter</span>
+            </Link>
+            <Link href="#" className="text-gray-600 hover:text-blue-600">
+              <Linkedin size={18} />
+              <span className="sr-only">LinkedIn</span>
+            </Link>
+          </div>
+        </div>
+
+        {/* Main header */}
+        <div className="flex justify-between items-center py-4">
+          <div className="flex ">
+            <Link href="/" className="flex items-center">
+              <div className="relative w-[160px] h-32 mr-2">
+                <img
+                  src="/logo.jpg"
+                  alt="Logo PCM"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+              <div className="hidden md:block">
+                <h1 className="font-bold text-lg text-blue-900">CABINET PCM</h1>
+                <p className="text-xs text-green-900">PREVENT CARE MEDICAL</p>
+              </div>
+            </Link>
+          </div>
+
+          <div className="hidden md:flex items-center space-x-6">
+            <div className="flex items-center">
+              <MapPin className="text-green-800 mr-2" size={50} />
+              <div>
+                <p className="text-sm text-gray-500">Plateau avenue Delafosse</p>
+                <p className="font-medium text-xl text-indigo-900">Abidjan</p>
+              </div>
+            </div>
+
+            <div className="flex items-center">
+              <Phone className="text-green-800 mr-2" size={50} />
+              <div>
+                <p className="text-sm text-gray-500">Contactez-Nous</p>
+                <p className="font-medium text-xl text-indigo-900">+225 01 53 88 66 72</p>
+              </div>
+            </div>
+
+            <div className="flex items-center">
+              <Clock className="text-green-800 mr-2" size={50} />
+              <div>
+                <p className="text-sm text-gray-500">Rendez-Vous</p>
+                <p className="font-medium text-xl text-indigo-900">En ligne</p>
+              </div>
+            </div>
+
+            <div className="flex items-center">
+              <Link href="#" className="flex items-center">
+                <Download className="text-green-800 mr-2" size={50} />
+                <div>
+                  <p className="text-sm text-gray-500">Notre Brochure</p>
+                  <p className="font-medium text-xl text-indigo-900">Télécharger</p>
+                </div>
+              </Link>
+
+            </div>
+          </div>
+
+          {/* Mobile menu button */}
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Open menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right">
+              <div className="flex flex-col h-full">
+                <div className="flex justify-between items-center border-b pb-4">
+                  <div className="font-bold text-lg text-indigo-800">PREVENT CARE MEDICAL</div>
+                </div>
+                <nav className="flex flex-col gap-4 mt-8">
+                  {navItems.map((item) => (
+                    <Link key={item.name} href={item.href} className="text-lg font-medium hover:text-blue-600">
+                      {item.name}
+                    </Link>
+                  ))}
+                </nav>
+                <div className="mt-auto pt-4 border-t">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex items-center">
+                      <MapPin className="text-green-800 mr-2" size={20} />
+                      <span>Plateau avenue Delafosse, Abidjan</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Phone className="text-green-800 mr-2" size={20} />
+                      <span>+225 01 53 88 66 72</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Clock className="text-green-800 mr-2" size={20} />
+                      <span>Rendez-Vous En ligne</span>
+                    </div>
+                    <div className="flex items-center">
+                      <Download className="text-green-800 mr-2" size={20} />
+                      <span>Télécharger Notre Brochure</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </SheetContent>
+          </Sheet>
+        </div>
+
+        {/* Navigation */}
+        <nav className="hidden md:flex justify-between items-center py-4 border-t">
+          {navItems.map((item) => (
+            <Link
+              key={item.name}
+              href={item.href}
+              className="text-sm font-medium hover:text-blue-600 transition-colors"
+            >
+              {item.name}
+            </Link>
+          ))}
+        </nav>
+      </div>
+    </header>
+  )
+}
