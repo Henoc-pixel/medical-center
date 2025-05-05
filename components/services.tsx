@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useState } from "react"; // Import de useState pour gérer les états de hover
-import { Calendar, ChevronRight, Clock } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 export function Services() {
   // États pour gérer les interactions hover
   const [hoveredCard, setHoveredCard] = useState<number | null>(null);
@@ -51,10 +51,11 @@ export function Services() {
       <div className="container mx-auto px-4">
         {/* En-tête de la section */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
-            Nos Prestations
+          <h2 className="text-3xl font-bold text-indigo-800 mb-4 hover:text-indigo-600">
+            NOS PRESTATIONS
           </h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto"></div>
+          <div className="w-20 h-1 bg-green-600 mx-auto"></div>
+          <h4 className="text-base font-medium italic text-blue-800 mt-5 mb-6">Prestations de services en matière de Médecine du Travail</h4>
         </div>
 
         {/* Grille des services */}
@@ -78,7 +79,7 @@ export function Services() {
                 <img
                   src={service.image}
                   alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
+                  className="w-full h-full object-cover rounded-lg transition-transform duration-500 hover:scale-105"
                 />
               </div>
 
@@ -87,7 +88,7 @@ export function Services() {
                 <CardTitle
                   className={`
                     text-xl text-center transition-colors duration-200
-                    ${hoveredTitle === index ? "text-red-600" : "text-gray-900"}
+                    ${hoveredTitle === index ? "text-red-600" : "text-indigo-800"}
                   `}
                   onMouseEnter={() => setHoveredTitle(index)}
                   onMouseLeave={() => setHoveredTitle(null)}
@@ -98,7 +99,7 @@ export function Services() {
 
               {/* Contenu de la carte */}
               <CardContent className="text-center pb-6">
-                <CardDescription className="text-gray-600">
+                <CardDescription className="text-gray-400 font-medium text-base">
                   {service.description}
                 </CardDescription>
               </CardContent>
@@ -107,7 +108,7 @@ export function Services() {
         </div>
         {/* Bouton "Voir toutes les prestations" */}
         <div className="text-center mt-12">
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
+          <Button size="lg" className="bg-red-600 hover:bg-indigo-700">
             Voir toutes nos prestations
             <ChevronRight className="ml-2 h-4 w-4" />
           </Button>

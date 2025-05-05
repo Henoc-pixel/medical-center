@@ -1,7 +1,7 @@
 
 export function About() {
   return (
-    <section id="about" className="py-16 bg-white">
+    <section id="about" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row items-center gap-8">
           <div className="w-full md:w-1/2">
@@ -20,8 +20,9 @@ export function About() {
             </div>
           </div>
           <div className="w-full md:w-1/2">
-            <h2 className="text-3xl font-bold text-indigo-800 mb-6">
+            <h2 className="text-3xl font-bold text-indigo-800 mb-6 hover:text-indigo-600">
               À propos de nous
+              <div className="w-20 h-1 bg-green-600 mt-4"></div>
             </h2>
             <p className="text-gray-700 mb-6">
               Le <strong>CABINET PREVENT CARE MEDICAL</strong> est un centre

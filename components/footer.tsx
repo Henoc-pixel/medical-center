@@ -10,12 +10,12 @@ export function Footer() {
             <div className="flex items-center mb-4">
               <div className="relative h-10 w-10 mr-2">
                 <div className="absolute inset-0 rounded-full border-2 border-white flex items-center justify-center">
-                  <span className="text-white font-bold">EMR</span>
+                  <span className="text-white font-bold">PCM</span>
                 </div>
               </div>
               <div>
-                <h3 className="font-bold">ESPACE MÉDICAL</h3>
-                <p className="text-xs text-white/70">LA ROTONDE</p>
+                <h3 className="font-bold">CABINET</h3>
+                <p className="text-xs text-white/70">PREVENT CARE MEDICAL</p>
               </div>
             </div>
             <p className="text-white/70 mb-4">
@@ -122,14 +122,14 @@ export function Footer() {
               </li>
               <li className="flex items-start">
                 <Mail className="h-5 w-5 mr-2 text-white/70" />
-                <span className="text-white/70">contact@emr.ci</span>
+                <span className="text-white/70">contact@cabinet-pcm.ci</span>
               </li>
             </ul>
           </div>
         </div>
 
         <div className="border-t border-white/20 mt-8 pt-8 text-center text-white/70">
-          <p>© 2024 Espace Médical La Rotonde. Tous droits réservés.</p>
+          <p>© 2025 Cabinent Prevent Care Medical. Tous droits réservés.</p>
         </div>
       </div>
     </footer>
