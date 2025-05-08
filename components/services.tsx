@@ -55,7 +55,9 @@ export function Services() {
             NOS PRESTATIONS
           </h2>
           <div className="w-20 h-1 bg-green-600 mx-auto"></div>
-          <h4 className="text-base font-medium italic text-blue-800 mt-5 mb-6">Prestations de services en matière de Médecine du Travail</h4>
+          <h4 className="text-base font-medium italic text-blue-800 mt-5 mb-6">
+            Prestations de services en matière de Médecine du Travail
+          </h4>
         </div>
 
         {/* Grille des services */}
@@ -88,7 +90,11 @@ export function Services() {
                 <CardTitle
                   className={`
                     text-xl text-center transition-colors duration-200
-                    ${hoveredTitle === index ? "text-red-600" : "text-indigo-800"}
+                    ${
+                      hoveredTitle === index
+                        ? "text-green-800"
+                        : "text-indigo-800"
+                    }
                   `}
                   onMouseEnter={() => setHoveredTitle(index)}
                   onMouseLeave={() => setHoveredTitle(null)}
@@ -108,7 +114,7 @@ export function Services() {
         </div>
         {/* Bouton "Voir toutes les prestations" */}
         <div className="text-center mt-12">
-          <Button size="lg" className="bg-red-600 hover:bg-indigo-700">
+          <Button size="lg" className="bg-blue-600 hover:bg-indigo-700">
             Voir toutes nos prestations
             <ChevronRight className="ml-2 h-4 w-4" />
           </Button>

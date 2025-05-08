@@ -12,6 +12,9 @@ import { format } from "date-fns"
 import { fr } from "date-fns/locale"
 import { CalendarIcon } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { ChevronRight, Clock } from "lucide-react"; 
+import Link from "next/link"
+
 
 export function Appointment() {
   const [date, setDate] = useState<Date | undefined>(undefined)
@@ -26,10 +29,11 @@ export function Appointment() {
     <section id="appointment" className="py-16 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row gap-8">
-          <div className="w-full md:w-1/2 bg-blue-600 rounded-lg p-8 text-white">
+          <div className="w-full md:w-2/3 bg-blue-600 rounded-lg p-8 text-white">
             <h2 className="text-3xl font-bold mb-6">Prendre Rendez-vous</h2>
             <p className="mb-8">
-              Prenez rendez-vous avec nos médecins spécialistes pour vos besoins en médecine du travail.
+              Prenez rendez-vous avec nos médecins spécialistes pour vos besoins
+              en médecine du travail.
             </p>
 
             <div className="space-y-6">
@@ -51,8 +55,12 @@ export function Appointment() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-xl">Examens médicaux complets</h3>
-                  <p className="text-white/80">Consultations avec nos médecins spécialistes</p>
+                  <h3 className="font-semibold text-xl">
+                    Examens médicaux complets
+                  </h3>
+                  <p className="text-white/80">
+                    Consultations avec nos médecins spécialistes
+                  </p>
                 </div>
               </div>
 
@@ -75,7 +83,9 @@ export function Appointment() {
                 </div>
                 <div>
                   <h3 className="font-semibold text-xl">Horaires flexibles</h3>
-                  <p className="text-white/80">Du lundi au vendredi, de 8h à 17h</p>
+                  <p className="text-white/80">
+                    Du lundi au vendredi, de 8h à 17h
+                  </p>
                 </div>
               </div>
 
@@ -97,14 +107,42 @@ export function Appointment() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="font-semibold text-xl">Assistance téléphonique</h3>
+                  <h3 className="font-semibold text-xl">
+                    Assistance téléphonique
+                  </h3>
                   <p className="text-white/80">+225 01 53 88 66 72</p>
                 </div>
               </div>
             </div>
           </div>
+          <div
+            className="w-full md:w-1/3 rounded-lg p-8 text-white"
+            style={{
+              backgroundColor: "rgb(22 101 52 / var(--tw-text-opacity, 1))",
+            }}
+          >
+            <div className="text-center">
+              {/* Logo animé */}
+              <div className="flex justify-center mb-6 mt-6 animate-spin">
+                <Clock className="h-12 w-12 text-white" />
+              </div>
 
-          <div className="w-full md:w-1/2">
+              {/* Bouton stylisé */}
+              <div className="flex justify-center mt-16">
+                <Link href="/rendezvous">
+                  <Button
+                    size="lg"
+                    className="bg-blue-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-300 flex items-center space-x-2"
+                  >
+                    <span>Prendre rendez-vous</span>
+                    <ChevronRight className="h-5 w-5" />
+                  </Button>
+                </Link>
+              </div>
+            </div>
+          </div>
+
+          {/*<div className="w-full md:w-1/2">
             <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-lg shadow-md">
               <h3 className="text-2xl font-bold mb-6">Formulaire de rendez-vous</h3>
 
@@ -164,9 +202,9 @@ export function Appointment() {
                 Envoyer
               </Button>
             </form>
-          </div>
+          </div>*/}
         </div>
       </div>
     </section>
-  )
+  );
 }

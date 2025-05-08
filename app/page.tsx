@@ -1,4 +1,3 @@
-import {Header} from "@/components/header"
 import {Hero} from "@/components/hero"
 import {About} from "@/components/about"
 import {Services} from "@/components/services"
@@ -13,7 +12,6 @@ import "@/styles/globals.css"
 export default function Home() {
     return (
         <main>
-            <Header/>
             <Hero/>
             <About/>
             <News/>
@@ -24,7 +22,6 @@ export default function Home() {
             {/*
             <Training/>
             */}
-            <Footer/>
         </main>
     );
 }
