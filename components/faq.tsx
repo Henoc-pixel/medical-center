@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import {CircleMinus, CirclePlus, MessagesSquare} from "lucide-react";
+import { CircleMinus, CirclePlus, MessagesSquare } from "lucide-react";
 
 export function Faq() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
@@ -50,66 +50,22 @@ export function Faq() {
   return (
     <section className="py-16 bg-white-200">
       <div className="flex flex-col lg:flex-row gap-8">
-        {/* Partie gauche - FAQ */}
-        <div className="space-y-8 lg:w-1/2 p-24">
-          <div className="text-left mb-12 flex">
-            <span className="text-red-600">
-                <MessagesSquare className="w-14 h-14" />
-            </span>
-            <h2 className="text-4xl m-4 font-extrabold text-indigo-800 hover:text-indigo-600">
-              FAQ
-            </h2>
-          </div>
-          <h4 className="text-base font-medium text-gray-400 mb-4">Questions fréquemments posées</h4>
-          {faqs.map((faq, index) => (
-              <div
-                  key={index}
-                  className="border border-white bg-white shadow-lg hover:shadow-md transform hover:scale-[1.01] transition-all duration-300 ease-in-out"
-              >
-                <button
-                    className={`flex justify-between items-center w-full text-left p-4 transition-colors duration-200 hover:bg-indigo-800 hover:text-white ${
-                        openIndex === index ? "bg-indigo-800 text-white" : "bg-gray-100 text-indigo-600"
-                    }`}
-                    onClick={() => toggleAccordion(index)}
-                >
-                  <span>
-                   <span className="text-2xl font-semibold text-red-600">
-                    {`0${index + 1}.   `}
-                  </span>
-                  <span className="text-lg font-semibold  ">
-                    {`${faq.question}`}
-                  </span>
-                  </span>
-
-                  <span className="text-xl font-bold text-gray-300">
-                    {openIndex === index ? <CircleMinus /> : <CirclePlus />}
-                  </span>
-                </button>
-                {openIndex === index && (
-                    <div className="px-4 pb-4 m-4 text-gray-500 text-lg text-extrabold leading-relaxed animate-fade-in">
-                      {faq.answer}
-                    </div>
-                )}
-              </div>
-          ))}
-        </div>
-
-        {/* Partie droite - Images + contenu */}
+        {/* Partie gauche - Images + contenu */}
         <div className="lg:w-1/2">
           {/* Ligne 1 - Image + Texte */}
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* Image */}
             <div className="bg-gray-100 overflow-hidden relative h-full">
               <Image
-                  src={images.medicalTeam}
-                  alt="Équipe médicale"
-                  fill
-                  className="object-cover"
+                src={images.medicalTeam}
+                alt="Équipe médicale"
+                fill
+                className="object-cover"
               />
             </div>
 
             {/* Texte */}
-            <div className="bg-red-600 p-6 border border-indigo-100">
+            <div className="bg-green-800 p-6 border border-indigo-100">
               <h3 className="text-xl font-bold text-white mb-4">
                 NOUS VOUS FACILITONS LA VIE EN ETANT
               </h3>
@@ -126,8 +82,8 @@ export function Faq() {
               </p>
               <div className="text-center">
                 <Link
-                    href="#contact"
-                    className="mt-4 inline-block text-bold bg-white hover:bg-indigo-900 hover:text-white text-indigo-700 px-6 py-2 rounded text-base transition-colors"
+                  href="#contact"
+                  className="mt-4 inline-block text-bold bg-white hover:bg-blue-700 hover:text-white text-red-600 px-6 py-2 rounded text-base transition-colors"
                 >
                   Nous contacter
                 </Link>
@@ -138,7 +94,7 @@ export function Faq() {
           {/* Ligne 2 - Texte + Image */}
           <div className="grid grid-cols-1 md:grid-cols-2">
             {/* Texte */}
-            <div className="bg-indigo-900 p-6 border border-indigo-100">
+            <div className="bg-blue-700 p-6 border border-indigo-100">
               <h3 className="text-xl font-bold text-white mb-4">
                 ACCROÎTRE VOTRE PRODUCTIVITÉ
               </h3>
@@ -153,8 +109,8 @@ export function Faq() {
               </ol>
               <div className="text-center">
                 <Link
-                    href="#en_savoire_plus"
-                    className="mt-4 inline-block text-bold bg-white hover:bg-red-600 hover:text-white text-indigo-700 px-6 py-2 rounded text-base transition-colors"
+                  href="#en_savoire_plus"
+                  className="mt-4 inline-block text-bold bg-white hover:bg-green-800 hover:text-white text-red-600 px-6 py-2 rounded text-base transition-colors"
                 >
                   En Savoir Plus
                 </Link>
@@ -164,16 +120,62 @@ export function Faq() {
             {/* Image */}
             <div className="bg-gray-100 overflow-hidden relative h-full">
               <Image
-                  src={images.productivity}
-                  alt="Productivité en entreprise"
-                  fill
-                  className="object-cover"
+                src={images.productivity}
+                alt="Productivité en entreprise"
+                fill
+                className="object-cover"
               />
             </div>
           </div>
         </div>
-      </div>
+        {/* Partie droite - FAQ */}
+        <div className="space-y-8 lg:w-1/2 p-24">
+          <div className="text-left mb-12 flex">
+            <span className="text-red-600">
+              <MessagesSquare className="w-14 h-14" />
+            </span>
+            <h2 className="text-4xl m-4 font-extrabold text-blue-700 hover:text-indigo-600">
+              FAQ
+            </h2>
+          </div>
+          <h4 className="text-base font-medium text-gray-400 mb-4">
+            Questions fréquemments posées
+          </h4>
+          {faqs.map((faq, index) => (
+            <div
+              key={index}
+              className="border border-white bg-white shadow-lg hover:shadow-md transform hover:scale-[1.01] transition-all duration-300 ease-in-out"
+            >
+              <button
+                className={`flex justify-between items-center w-full text-left p-4 transition-colors duration-200 hover:bg-green-800 hover:text-white ${
+                  openIndex === index
+                    ? "bg-green-800 text-white"
+                    : "bg-gray-100 text-blue-700"
+                }`}
+                onClick={() => toggleAccordion(index)}
+              >
+                <span>
+                  <span className="text-2xl font-semibold text-red-600">
+                    {`0${index + 1}.   `}
+                  </span>
+                  <span className="text-lg font-semibold  ">
+                    {`${faq.question}`}
+                  </span>
+                </span>
 
+                <span className="text-xl font-bold text-gray-300">
+                  {openIndex === index ? <CircleMinus /> : <CirclePlus />}
+                </span>
+              </button>
+              {openIndex === index && (
+                <div className="px-4 pb-4 m-4 text-gray-500 text-lg text-extrabold leading-relaxed animate-fade-in">
+                  {faq.answer}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* Animation utilitaire (à placer dans tailwind.config si besoin) */}
       <style jsx>{`
