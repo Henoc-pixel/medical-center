@@ -19,6 +19,14 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 
+interface FormData {
+  full_name: string;
+  email: string;
+  telephone: string;
+  objet: string;
+  message: string;
+}
+
 export default function FormationsPage() {
   const [openModule, setOpenModule] = useState<string | null>(null);
 
@@ -164,6 +172,53 @@ export default function FormationsPage() {
         </div>
       ),
     },
+  };
+
+  // Formulaire de réservation
+  const [formData, setFormData] = useState<FormData>({
+    full_name: "",
+    email: "",
+    telephone: "",
+    objet: "",
+    message: "",
+  });
+  const [status, setStatus] = useState<string>("");
+
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus("Envoi en cours...");
+
+    const response = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      setStatus("Message envoyé avec succès !");
+      setFormData({
+        full_name: "",
+        email: "",
+        telephone: "",
+        objet: "",
+        message: "",
+      });
+      console.log("Message envoyé avec succès");
+    } else {
+      setStatus("Erreur lors de l'envoi du message.");
+      console.log("Erreur lors de l'envoi du message");
+    }
   };
 
   return (
@@ -404,32 +459,48 @@ export default function FormationsPage() {
                 <MessageCircle className="w-5 h-5" />
                 Demande de conseil
               </h3>
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <input
+                  type="text"
                   placeholder="Nom & Prénom*"
                   className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                   required
+                  name="full_name"
+                  value={formData.full_name}
+                  onChange={handleChange}
                 />
                 <input
                   placeholder="E-mail*"
                   type="email"
                   className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                   required
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
                 />
                 <input
                   placeholder="Téléphone*"
                   className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                   required
+                  name="telephone"
+                  value={formData.telephone}
+                  onChange={handleChange}
                 />
                 <input
                   placeholder="Objet"
                   className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
+                  name="objet"
+                  value={formData.objet}
+                  onChange={handleChange}
                 />
                 <textarea
                   placeholder="Votre message..."
                   className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                   rows={3}
                   required
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
                 ></textarea>
                 <Button
                   type="submit"
@@ -437,6 +508,7 @@ export default function FormationsPage() {
                 >
                   Envoyer la demande
                 </Button>
+                <p>{status}</p>
               </form>
             </div>
 
