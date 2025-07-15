@@ -44,7 +44,7 @@ export function Header() {
     { name: "Formations", href: "/formation" },
     { name: "Prendre Un RDV", href: "/rendezvous" },
     { name: "Actualités", href: "/actualite" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
