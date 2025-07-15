@@ -173,8 +173,73 @@ export default function FormationsPage() {
       ),
     },
   };
+  const [reservationData, setReservationData] = useState({
+    nom: "",
+    prenom: "",
+    email: "",
+    telephone: "",
+    entreprise: "",
+    fonction: "",
+    formations: [] as string[],
+    nombre_personnes: "",
+    commentaire: "",
+  });
+  const [reservationStatus, setReservationStatus] = useState("");
 
-  // Formulaire de réservation
+  const handleReservationChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = e.target;
+    setReservationData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleFormationCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value, checked } = e.target;
+    setReservationData((prev) => ({
+      ...prev,
+      formations: checked
+        ? [...prev.formations, value]
+        : prev.formations.filter((f) => f !== value),
+    }));
+  };
+
+  const handleReservationSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setReservationStatus("Envoi en cours...");
+
+    const response = await fetch("/api/reservation", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(reservationData),
+    });
+
+    if (response.ok) {
+      setReservationStatus("Demande envoyée avec succès !");
+      setReservationData({
+        nom: "",
+        prenom: "",
+        email: "",
+        telephone: "",
+        entreprise: "",
+        fonction: "",
+        formations: [],
+        nombre_personnes: "",
+        commentaire: "",
+      });
+    } else {
+      setReservationStatus("Erreur lors de l'envoi de la demande.");
+    }
+  };
+
+
+
+
+  // Formulaire de prisede de conseil
   const [formData, setFormData] = useState<FormData>({
     full_name: "",
     email: "",
@@ -305,48 +370,71 @@ export default function FormationsPage() {
             <form
               id="reservation-form"
               className="mt-12 space-y-6 bg-gray-50 p-6 rounded-lg"
+              onSubmit={handleReservationSubmit}
             >
               <h3 className="text-2xl font-bold text-indigo-800 mb-6">
                 Formulaire de Réservation
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <input
-                  placeholder="Nom"
+                  name="nom"
+                  value={reservationData.nom}
+                  onChange={handleReservationChange}
+                  placeholder="Nom*"
+                  required
                   className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 />
                 <input
-                  placeholder="Prénom"
+                  name="prenom"
+                  value={reservationData.prenom}
+                  onChange={handleReservationChange}
+                  placeholder="Prénom*"
+                  required
                   className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 />
                 <input
+                  name="telephone"
+                  value={reservationData.telephone}
+                  onChange={handleReservationChange}
                   placeholder="Téléphone*"
-                  className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                   required
+                  className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 />
                 <input
+                  name="email"
+                  value={reservationData.email}
+                  onChange={handleReservationChange}
+                  type="email"
                   placeholder="Email*"
-                  className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                   required
+                  className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 />
                 <input
+                  name="entreprise"
+                  value={reservationData.entreprise}
+                  onChange={handleReservationChange}
                   placeholder="Entreprise"
                   className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 />
                 <input
+                  name="fonction"
+                  value={reservationData.fonction}
+                  onChange={handleReservationChange}
                   placeholder="Fonction"
                   className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 />
               </div>
 
               <fieldset className="mt-6 space-y-3">
-                <legend className="font-semibold text-lg">Formation*</legend>
+                <legend className="font-semibold text-lg">Formation(s)*</legend>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   {Object.keys(moduleDetails).map((type) => (
                     <label key={type} className="flex items-center space-x-3">
                       <input
                         type="checkbox"
-                        name="formation"
                         value={type}
+                        checked={reservationData.formations.includes(type)}
+                        onChange={handleFormationCheckbox}
                         className="h-5 w-5 text-red-600 rounded focus:ring-green-800"
                       />
                       <span>{moduleDetails[type].title}</span>
@@ -356,10 +444,17 @@ export default function FormationsPage() {
               </fieldset>
 
               <input
-                placeholder="Nombre de personnes"
+                name="nombre_personnes"
+                value={reservationData.nombre_personnes}
+                onChange={handleReservationChange}
+                placeholder="Nombre de personnes*"
+                required
                 className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
               />
               <textarea
+                name="commentaire"
+                value={reservationData.commentaire}
+                onChange={handleReservationChange}
                 placeholder="Commentaires ou message supplémentaire"
                 className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 rows={4}
@@ -371,6 +466,11 @@ export default function FormationsPage() {
               >
                 Soumettre la demande
               </Button>
+              {reservationStatus && (
+                <p className="text-center text-sm text-gray-600">
+                  {reservationStatus}
+                </p>
+              )}
             </form>
           </div>
 
@@ -508,7 +608,9 @@ export default function FormationsPage() {
                 >
                   Envoyer la demande
                 </Button>
-                <p>{status}</p>
+                {status && (
+                  <p className="text-center text-sm text-gray-600">{status}</p>
+                )}
               </form>
             </div>
 

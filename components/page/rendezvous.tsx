@@ -1,6 +1,5 @@
-// app/rendezvous/page.tsx
 "use client";
-
+import React from "react";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -17,6 +16,8 @@ export default function RendezVousPage() {
     message: "",
   });
 
+  const [status, setStatus] = useState("");
+
   const handleChange = (
     e: React.ChangeEvent<
       HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
@@ -26,10 +27,33 @@ export default function RendezVousPage() {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(formData);
-    // Traitement du formulaire ici
+    setStatus("Envoi en cours...");
+
+    const response = await fetch("/api/rendezvous", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    });
+
+    if (response.ok) {
+      setStatus("Votre demande a été envoyée avec succès !");
+      setFormData({
+        nom: "",
+        prenom: "",
+        telephone: "",
+        email: "",
+        entreprise: "",
+        fonction: "",
+        objet: "Conseils",
+        message: "",
+      });
+    } else {
+      setStatus("Une erreur est survenue lors de l’envoi.");
+    }
   };
 
   return (
@@ -54,6 +78,7 @@ export default function RendezVousPage() {
                 placeholder="Nom"
                 className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 onChange={handleChange}
+                value={formData.nom}
                 required
               />
               <input
@@ -62,6 +87,7 @@ export default function RendezVousPage() {
                 placeholder="Prénom"
                 className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 onChange={handleChange}
+                value={formData.prenom}
                 required
               />
               <input
@@ -70,6 +96,7 @@ export default function RendezVousPage() {
                 placeholder="Téléphone"
                 className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 onChange={handleChange}
+                value={formData.telephone}
                 required
               />
               <input
@@ -78,6 +105,7 @@ export default function RendezVousPage() {
                 placeholder="Email"
                 className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 onChange={handleChange}
+                value={formData.email}
                 required
               />
               <input
@@ -86,6 +114,7 @@ export default function RendezVousPage() {
                 placeholder="Entreprise"
                 className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 onChange={handleChange}
+                value={formData.entreprise}
               />
               <input
                 name="fonction"
@@ -93,6 +122,7 @@ export default function RendezVousPage() {
                 placeholder="Fonction"
                 className="border p-3 rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
                 onChange={handleChange}
+                value={formData.fonction}
               />
             </div>
 
@@ -101,6 +131,7 @@ export default function RendezVousPage() {
               className="p-3 border rounded w-full focus:ring-2 focus:ring-green-800 focus:border-transparent"
               value={formData.objet}
               onChange={handleChange}
+              required
             >
               <option value="Conseils">Conseils</option>
               <option value="Consultation">Consultation</option>
@@ -113,6 +144,8 @@ export default function RendezVousPage() {
               className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
               rows={4}
               onChange={handleChange}
+              value={formData.message}
+              required
             />
 
             <Button
@@ -121,6 +154,10 @@ export default function RendezVousPage() {
             >
               Soumettre la demande
             </Button>
+
+            {status && (
+              <p className="text-center text-sm text-gray-600">{status}</p>
+            )}
           </form>
 
           <div className="w-full md:w-1/3 space-y-4">
