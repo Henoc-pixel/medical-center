@@ -39,7 +39,7 @@ export function Header() {
 
   const navItems = [
     { name: "Accueil", href: "/" },
-    { name: "Présentation", href: "#about" },
+    { name: "Présentation", href: "/presentation" },
     { name: "Prestations", href: "#services" },
     { name: "Formations", href: "/formation" },
     { name: "Prendre Un RDV", href: "/rendezvous" },
