@@ -3,8 +3,8 @@
 import { useState } from "react";
 import {
   Mail,
-  Phone,
-  MapPin,
+  Globe,
+  Headphones,
   Facebook,
   Instagram,
   Twitter,
@@ -12,6 +12,11 @@ import {
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -62,151 +67,216 @@ export default function Contact() {
   };
 
   return (
-    <div className="w-full py-16 px-4 md:px-10 bg-white">
-      <h2 className="text-3xl md:text-4xl font-bold text-center text-indigo-900 mb-12">
-        Contactez-nous
+    <div className="min-h-screen bg-gray-50 p-4">
+      <h2 className="text-3xl md:text-4xl font-bold text-center text-indigo-900 mb-12 mt-12">
+        Appelez-nous ou remplissez le formulaire
       </h2>
-
-      <div className="grid md:grid-cols-2 gap-10 items-start">
-        {/* Infos de contact centrées */}
-        <div className="space-y-8 text-center md:text-left flex flex-col items-center md:items-start">
-          <div className="flex items-center gap-4">
-            <div className="bg-green-100 p-3 rounded-full">
-              <MapPin className="text-green-700 w-6 h-6" />
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Side - Company Information */}
+          <div className="space-y-8 lg:col-span-1">
+            {/* Siège Social */}
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-teal-100 rounded-lg transition-all duration-300 hover:scale-110 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                <Globe className="h-8 w-8 text-teal-600" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-700 mb-2">
+                  SIÈGE SOCIAL
+                </h3>
+                <p className="text-slate-600 leading-relaxed">
+                  Abidjan Cocody Angré Djorobite Bessikoi -<br />
+                  Prêt de la Pharmacie Saint Viateur -<br />
+                  Lot 5344, Ilot 468
+                </p>
+              </div>
             </div>
-            <div>
-              <h4 className="text-sm font-semibold text-gray-700 uppercase">
-                Adresse
-              </h4>
-              <p className="text-gray-600">
-                Plateau avenue Delafosse, Immeuble Ambassades – 2e étage
-              </p>
+
+            {/* Centre d'Appel */}
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-teal-100 rounded-lg transition-all duration-300 hover:scale-110 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                <Headphones className="h-8 w-8 text-teal-600" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-700 mb-2">
+                  CENTRE D'APPEL
+                </h3>
+                <p className="text-slate-600 mb-1">Ouvert 24/7</p>
+                <p className="text-slate-600">(+225) 27 20 21 76 09</p>
+              </div>
+            </div>
+
+            {/* Email */}
+            <div className="flex items-start gap-4">
+              <div className="p-3 bg-teal-100 rounded-lg transition-all duration-300 hover:scale-110 hover:shadow-lg hover:-translate-y-1 cursor-pointer">
+                <Mail className="h-8 w-8 text-teal-600" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-slate-700 mb-2">
+                  EMAIL
+                </h3>
+                <p className="text-slate-600">medical@pcm.ci</p>
+              </div>
+            </div>
+
+            {/* Social Media Icons */}
+            <div className="flex gap-4 pt-4">
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-slate-600 hover:text-blue-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-md"
+              >
+                <Facebook className="h-5 w-5" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-slate-600 hover:text-pink-600 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-md"
+              >
+                <Instagram className="h-5 w-5" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-slate-600 hover:text-blue-400 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-md"
+              >
+                <Twitter className="h-5 w-5" />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="text-slate-600 hover:text-blue-700 transition-all duration-300 hover:scale-110 hover:-translate-y-1 hover:shadow-md"
+              >
+                <Linkedin className="h-5 w-5" />
+              </Button>
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <div className="bg-green-100 p-3 rounded-full">
-              <Phone className="text-green-700 w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold text-gray-700 uppercase">
-                Téléphone
-              </h4>
-              <p className="text-gray-600">(+225) 27 20 21 76 09</p>
-            </div>
-          </div>
+          {/* Right Side - Contact Form */}
+          <Card className="shadow-lg lg:col-span-2">
+            <CardContent className="p-8">
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Nom & Prénom */}
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="name"
+                      className="text-slate-700 font-medium"
+                    >
+                      Nom & Prénom(s) <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Nom & Prénom(s)"
+                      className="bg-slate-100 border-slate-200 focus:bg-white"
+                      required
+                    />
+                  </div>
 
-          <div className="flex items-center gap-4">
-            <div className="bg-green-100 p-3 rounded-full">
-              <Mail className="text-green-700 w-6 h-6" />
-            </div>
-            <div>
-              <h4 className="text-sm font-semibold text-gray-700 uppercase">
-                Email
-              </h4>
-              <p className="text-gray-600">medic@emr.ci</p>
-            </div>
-          </div>
+                  {/* E-mail */}
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="email"
+                      className="text-slate-700 font-medium"
+                    >
+                      E-mail <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="compte@domaine.com"
+                      className="bg-slate-100 border-slate-200 focus:bg-white"
+                      required
+                    />
+                  </div>
+                </div>
 
-          {/* Réseaux sociaux avec liens réels */}
-          <div className="flex gap-4 pt-4 justify-center md:justify-start">
-            <a
-              href="https://facebook.com/emrci" // ← à personnaliser
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-100 p-2 rounded-full hover:bg-blue-600 hover:text-white transition"
-            >
-              <Facebook size={18} />
-            </a>
-            <a
-              href="https://instagram.com/emrci" // ← à personnaliser
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-100 p-2 rounded-full hover:bg-pink-600 hover:text-white transition"
-            >
-              <Instagram size={18} />
-            </a>
-            <a
-              href="https://twitter.com/emrci" // ← à personnaliser
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-100 p-2 rounded-full hover:bg-sky-500 hover:text-white transition"
-            >
-              <Twitter size={18} />
-            </a>
-            <a
-              href="https://linkedin.com/company/emrci" // ← à personnaliser
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-gray-100 p-2 rounded-full hover:bg-blue-700 hover:text-white transition"
-            >
-              <Linkedin size={18} />
-            </a>
-          </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  {/* Téléphone */}
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="phone"
+                      className="text-slate-700 font-medium"
+                    >
+                      Téléphone <span className="text-red-500">*</span>
+                    </Label>
+                    <Input
+                      id="phone"
+                      type="tel"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      placeholder="+225 07 99 99 99 99"
+                      className="bg-slate-100 border-slate-200 focus:bg-white"
+                      required
+                    />
+                  </div>
+
+                  {/* Objet */}
+                  <div className="space-y-2">
+                    <Label
+                      htmlFor="subject"
+                      className="text-slate-700 font-medium"
+                    >
+                      Objet
+                    </Label>
+                    <Input
+                      id="subject"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      placeholder="Ex: demande d'information"
+                      className="bg-slate-100 border-slate-200 focus:bg-white"
+                    />
+                  </div>
+                </div>
+
+                {/* Message */}
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="message"
+                    className="text-slate-700 font-medium"
+                  >
+                    Votre message
+                  </Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    placeholder="Entrez votre message..."
+                    className="bg-slate-100 border-slate-200 focus:bg-white min-h-[120px] resize-none"
+                    rows={6}
+                  />
+                </div>
+
+                {/* Submit Button */}
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  className="bg-red-600 hover:bg-red-700 text-white px-8 py-2 rounded-md font-medium transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
+                  {loading ? "Envoi en cours..." : "Envoyer le message"}
+                </Button>
+                {response && (
+                  <p className="text-center text-sm text-gray-600">
+                    {response}
+                  </p>
+                )}
+                {/* Privacy Notice */}
+                <p className="text-center text-base text-slate-500 italic antialiased mt-8">
+                  Votre adresse email ne sera pas publiée.
+                </p>
+              </form>
+            </CardContent>
+          </Card>
         </div>
-
-        {/* Formulaire */}
-        <form
-          onSubmit={handleSubmit}
-          className="bg-gray-50 p-8 rounded-lg shadow-md space-y-6"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <input
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-              placeholder="Nom & Prénom*"
-              required
-              className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
-            />
-            <input
-              name="email"
-              type="email"
-              value={formData.email}
-              onChange={handleChange}
-              placeholder="Email*"
-              required
-              className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
-            />
-            <input
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              placeholder="Téléphone*"
-              required
-              className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
-            />
-            <input
-              name="subject"
-              value={formData.subject}
-              onChange={handleChange}
-              placeholder="Objet"
-              className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
-            />
-          </div>
-
-          <textarea
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            placeholder="Votre message*"
-            required
-            rows={6}
-            className="border p-3 w-full rounded focus:ring-2 focus:ring-green-800 focus:border-transparent"
-          />
-
-          <Button
-            type="submit"
-            className="w-full bg-blue-700 hover:bg-blue-800 text-white"
-            disabled={loading}
-          >
-            {loading ? "Envoi en cours..." : "Envoyer le message"}
-          </Button>
-
-          {response && (
-            <p className="text-center text-sm text-gray-600">{response}</p>
-          )}
-        </form>
       </div>
     </div>
   );
