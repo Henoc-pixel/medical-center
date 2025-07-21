@@ -132,7 +132,7 @@ export function Appointment() {
                 <Link href="/rendezvous">
                   <Button
                     size="lg"
-                    className="bg-blue-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-300 flex items-center space-x-2"
+                    className="bg-red-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-full shadow-lg transition-all duration-300 flex items-center space-x-2"
                   >
                     <span>Prendre rendez-vous</span>
                     <ChevronRight className="h-5 w-5" />
@@ -141,68 +141,6 @@ export function Appointment() {
               </div>
             </div>
           </div>
-
-          {/*<div className="w-full md:w-1/2">
-            <form onSubmit={handleSubmit} className="space-y-6 bg-white p-8 rounded-lg shadow-md">
-              <h3 className="text-2xl font-bold mb-6">Formulaire de rendez-vous</h3>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label htmlFor="name" className="text-sm font-medium">
-                    Nom complet
-                  </label>
-                  <Input id="name" placeholder="John Doe" required />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">
-                    Email
-                  </label>
-                  <Input id="email" type="email" placeholder="john@example.com" required />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <label htmlFor="phone" className="text-sm font-medium">
-                    Téléphone
-                  </label>
-                  <Input id="phone" placeholder="+225 XX XX XX XX" required />
-                </div>
-
-                <div className="space-y-2">
-                  <label htmlFor="date" className="text-sm font-medium">
-                    Date
-                  </label>
-                  <Popover>
-                    <PopoverTrigger asChild>
-                      <Button
-                        variant="outline"
-                        className={cn("w-full justify-start text-left font-normal", !date && "text-muted-foreground")}
-                      >
-                        <CalendarIcon className="mr-2 h-4 w-4" />
-                        {date ? format(date, "PPP", { locale: fr }) : "Sélectionner une date"}
-                      </Button>
-                    </PopoverTrigger>
-                    <PopoverContent className="w-auto p-0">
-                      <Calendar mode="single" selected={date} onSelect={setDate} initialFocus locale={fr} />
-                    </PopoverContent>
-                  </Popover>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label htmlFor="message" className="text-sm font-medium">
-                  Message
-                </label>
-                <Textarea id="message" placeholder="Veuillez décrire vos besoins..." />
-              </div>
-
-              <Button type="submit" className="w-full bg-blue-600 hover:bg-blue-700">
-                Envoyer
-              </Button>
-            </form>
-          </div>*/}
         </div>
       </div>
     </section>

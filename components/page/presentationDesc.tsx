@@ -186,11 +186,11 @@ export function PresentationDesc() {
                     </div>
                 </div>
             </section>
-            <div className="bg-green-600 text-white py-8">
+            <div className="bg-gray-200 text-white py-8">
                 <div className="max-w-6xl mx-auto px-4">
                     <div className="text-center mb-4">
                         <p className="text-lg">
-                           <span className="text-blue-800/100 font-semibold antialiased"> Nous sommes à votre écoute.</span>  <span className="font-semibold antialiased">Appelez-nous au +225 27 20 21 76 04</span> ou
+                           <span className="text-blue-800/100 font-semibold antialiased"> Nous sommes à votre écoute.</span>  <span className="font-semibold antialiased">Appelez-nous au +225 01 53 88 66 72</span> ou
                             <span className="font-semibold antialiased"> demandez un rendez-vous en ligne.</span>
                         </p>
                     </div>

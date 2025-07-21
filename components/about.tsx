@@ -31,9 +31,9 @@ export function About() {
               d'Ivoire.
             </p>
             <p className="text-gray-700 mb-6">
-              Centre spécialisé en Santé et Sécurité au Travail totalisant 10
-              ans d’expérience dans plusieurs secteurs d’activités dont les
-              secteurs Minier, Pétrolier, Manutentionnaire, Btp,
+              Centre spécialisé en Santé et Sécurité au Travail, exercant avec
+              une grande expérience dans plusieurs secteurs d’activités dont
+              les secteurs Minier, Pétrolier, Manutentionnaire, Btp,
               Agro-industriel, Pharmaceutiques, Phytosanitaires, Commerces &
               Services, Grandes distributions, etc…
             </p>
