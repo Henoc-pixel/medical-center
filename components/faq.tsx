@@ -112,7 +112,7 @@ export function Faq() {
                   href="#en_savoire_plus"
                   className="mt-4 inline-block text-bold bg-white hover:bg-green-800 hover:text-white text-red-600 px-6 py-2 rounded text-base transition-colors"
                 >
-                  En Savoir Plus
+                  En savoir plus
                 </Link>
               </div>
             </div>

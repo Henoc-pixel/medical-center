@@ -18,9 +18,6 @@ export default function Home() {
             <Faq/>
             <Appointment/>
             <Contact/>
-            {/*
-            <Training/>
-            */}
         </main>
     );
 }
