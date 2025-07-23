@@ -28,22 +28,6 @@ export function HeroFormation() {
             Des formations certifiantes adaptées à vos besoins en santé et
             sécurité au travail
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 animate__animated animate__fadeIn animate__delay-3s">
-            <Button size="lg" className="bg-red-600 hover:bg-red-700">
-              <Link href="#formations" className="w-full">
-                Découvrez nos formations
-              </Link>
-              <ChevronRight className="ml-2 h-4 w-4" />
-            </Button>
-
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-transparent border-white text-white hover:bg-white/10"
-            >
-              Contactez-nous
-            </Button>
-          </div>
         </div>
       </div>
     </section>

@@ -1,12 +1,12 @@
-
-import ContactPage from "@/components/page/contact";
 import "@/styles/globals.css";
-import { Localisation } from "@/components/page/localisation";
+import Contact from "@/components/page/contact";
+import {Localisation} from "@/components/page/localisation";
+
 export default function Formation() {
-  return (
-    <main>
-      <Localisation />
-      <ContactPage />
-    </main>
-  );
+    return (
+        <main>
+            <Localisation/>
+            <Contact/>
+        </main>
+    );
 }
