@@ -27,20 +27,6 @@ export function RendezVousHero() {
             Complétez le formulaire pour réserver un créneau avec notre équipe
             médicale
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 animate__animated animate__fadeIn animate__delay-3s">
-            <Button size="lg" className="bg-red-600 hover:bg-red-700">
-              <Link href="#" className="w-full">
-                Accéder au formulaire
-              </Link>
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-transparent border-white text-white hover:bg-white/10"
-            >
-              Contactez-nous
-            </Button>
-          </div>
         </div>
       </div>
     </section>

@@ -39,12 +39,12 @@ export function Header() {
 
   const navItems = [
     { name: "Accueil", href: "/" },
-    { name: "Présentation", href: "#about" },
-    { name: "Prestations", href: "#services" },
+    { name: "Présentation", href: "/presentation" },
+    { name: "Prestations", href: "/prestation" },
     { name: "Formations", href: "/formation" },
     { name: "Prendre Un RDV", href: "/rendezvous" },
     { name: "Actualités", href: "/actualite" },
-    { name: "Contact", href: "#contact" },
+    { name: "Contact", href: "/contact" },
   ];
 
   return (
